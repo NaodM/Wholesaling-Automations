@@ -1,0 +1,22 @@
+# Dockerfile for Apify Actor to update Google Sheets
+
+# Use Node.js base image
+FROM apify/actor-node:20
+
+# Set working directory inside the container
+WORKDIR /usr/src/app
+
+# Copy all files from your local repository into the container
+COPY . ./
+
+# Install only production dependencies
+RUN npm install --quiet --only=prod --no-optional && (npm list || true)
+
+# Set environment variables needed for Google Sheets integration
+ARG GOOGLE_SHEETS_CREDENTIALS
+ARG SPREADSHEET_ID
+ENV GOOGLE_SHEETS_CREDENTIALS=$GOOGLE_SHEETS_CREDENTIALS
+ENV SPREADSHEET_ID=$SPREADSHEET_ID
+
+# Define entrypoint to run the actor
+CMD ["node", "main.js"]
