@@ -7,8 +7,9 @@ async function main() {
         const auth = await authorize();
 
         // Step 2: Get Addresses from Google Sheets
-        const spreadsheetId = '1ai-9Z8z_K6vek9KjvZ_91sO7bMjIznR1'; // Replace with your actual Google Sheet ID
-        const range = 'Sheet1!M2:M'; // Addresses are in column M, starting from row 2
+        const spreadsheetId = process.env.SPREADSHEET_ID; // Google Sheet ID from environment variable
+        const sheetName = process.env.SHEET_NAME || 'Sheet1'; // Sheet name from environment variable or default to 'Sheet1'
+        const range = `${sheetName}!M2:M`; // Addresses are in column M, starting from row 2
         const leads = await getSheetData(auth, spreadsheetId, range);
 
         // Step 3: Extract Addresses from Leads, filter out empty addresses
@@ -19,20 +20,20 @@ async function main() {
 
         // Step 5: Prepare Data for Update in Google Sheets
         const updateRangesPhones = [
-            'Sheet1!E2:E', // Phone 1
-            'Sheet1!F2:F', // Phone 2
-            'Sheet1!G2:G', // Phone 3
-            'Sheet1!H2:H', // Phone 4
-            'Sheet1!I2:I', // Phone 5
-            'Sheet1!J2:J', // Phone 6
-            'Sheet1!K2:K', // Phone 7
-            'Sheet1!L2:L'  // Phone 8
+            `${sheetName}!E2:E`, // Phone 1
+            `${sheetName}!F2:F`, // Phone 2
+            `${sheetName}!G2:G`, // Phone 3
+            `${sheetName}!H2:H`, // Phone 4
+            `${sheetName}!I2:I`, // Phone 5
+            `${sheetName}!J2:J`, // Phone 6
+            `${sheetName}!K2:K`, // Phone 7
+            `${sheetName}!L2:L`  // Phone 8
         ];
 
         // Initialize arrays for each phone column
         const phoneNumbersByColumn = Array(updateRangesPhones.length).fill(null).map(() => []);
 
-        // Iterate over each lead and prepare phone numbers or blanks
+        // Fill phone numbers for each lead or leave blank if missing
         leads.forEach((lead, index) => {
             if (!lead[0]) {
                 // If there is no address, leave all phone columns blank for this lead
