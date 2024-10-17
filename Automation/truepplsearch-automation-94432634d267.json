@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "truepplsearch-automation",
+  "private_key_id": "94432634d2672309342a3f19d7bf077fefa57d9b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCtyo2Ks1N7FEn7\n+KmNtpP94cEfKpjuDd7F58Yk1PztVaozWj/huRJ8Yl6DMp8LDQ1LH3Y2eXiOrX/w\n9qieAfAQG2lDiuwTwHRk8VU2Y5W3gRebJ7g5fGnq5LFtG9zCMgGT85hi0KzmIlcR\nT6rID3jxjHHLgIxkMNx3nfCh9uDDSryLwm/Nij0la4ZdE7p42PBY2pnxUrz/F+6L\nPHyJcnGK67WQ+lKQFYkozVeLnk4kwFM926ECxtrtOK9p4/2te0KhZ3UrCGmF40PM\nQgWa9igq9myK0fFnGUdB17PyhyMmq0WEt+JkHpBBhHdY6AWPLPqo1Gork6yN7/Dd\nhrrZSd5ZAgMBAAECggEADN9ANA97sFWh9DPS/8rP3nb3350qAL8jaqueeVsS1ROq\nUfg42+O3ZYyV/P2FGk5awh9qrqFjx0eSVBs6L80rcM9Nm4yA11FYHaONVkRdJ19m\n9kg5xNI8+Gz8t5I1JpIJxrb9E1vq48xpKqr+ASg6OEPY0tlALL88uRmy5BV9yMu9\n1eZg7yY/MgaD9fIk6GNuN6v75RR6Gc+0Uw1wVY6aIAC0A/1PiqjDkPAs2MfFDKBA\n5dEP6kFKJf8sExyClvW/GjJaPhp4deWSohaDFS49l+KQT5om0iO45FHiL93MuRqr\nHfr0bEGoh7fkInczE1yi3Nu2dv7jhbFrv3+SaX9i3QKBgQDnteA/Pbci/31khI2u\nbcY6lvUE8ZElUGnAKQkv2fj1lz3BAcG74DnKCpc8/QnzNB9TAHtr36wQVcItmx4t\nGz7boKbJShHUYwoJVbtdekv5YA2V0kys/5qxdQRERXSKtT6Xf/k4tuOCOq3lObvm\ncArOh2znWjvLP3At/ptv0VKp7QKBgQDAAl7xqiCjBcUsF6fUa1taPso6mLF1Pv9/\nareRABkx6NDGfHAAqdI7m1b3lsCYQTGi/Snmg0ScGseRVC0bWjs0InouFKvkTxTr\nLclm+vGTu6e+dNl4IEAeUUQB6s3xKOIa2dwVSLkm7RMqv1vJaJZ/pKVhAEDu6dT3\n/xqWU2FInQKBgQCaIvbFmvxUn7h+QV8uhX+0Qe9EFp4DQHbYiXO/DTT7ylweJFkH\n7aUDrf/lZj5UNnwP7uYrYGNJioLda66rOtCZsUjB5i/uJOPsSceV62DWxvrCi17O\nRkpVeg4YjEt2ahL1HQBgpei6HObI8Zr5M9c8hAIB9JiKH+0z64bi31AqEQKBgQCH\nmKUIMUb/GbIW41XIc1B+ON2D6BVaYXT5vJmKMvGYB3x4z6QhM8yd/6O5EaNNYqz1\nF6ghfA5V16ub/EAmkuBAfyCdrkd94kM5mooiyZEU7W8W11pEtTHStz05xWJOrrqO\nj9AWz9bBoKbqh10ArXWrCtEn4Y/5qPSXdnaGNrf7GQKBgDmnqksD4VzB/QWorhKM\nS8bfgVddNTyOXDd5UkbvEyXd70dSehZMrhs8vNXzmobRuKJNjzjmYb3zX9258w9i\nAIeWWc/WfBo8d8iXLZ9jZJbOrvH22Q2Qb6uH6beGVWddkBovUbEcNUDClwnvyGKu\nHKHMBqie/2Wk4YCm0xJP7pBq\n-----END PRIVATE KEY-----\n",
+  "client_email": "truepplsearch@truepplsearch-automation.iam.gserviceaccount.com",
+  "client_id": "114242538176739561838",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/truepplsearch%40truepplsearch-automation.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
