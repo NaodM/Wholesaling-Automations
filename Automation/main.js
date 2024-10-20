@@ -7,7 +7,7 @@ async function main() {
         const auth = await authorize();
 
         // Step 2: Get Addresses from Google Sheets
-        const spreadsheetId = process.env.SPREADSHEET_ID; // Google Sheet ID from environment variable
+        const spreadsheetId = process.env.SPREADSHEET_ID; '1ai-9Z8z_K6vek9KjvZ_91sO7bMjIznR1';// Google Sheet ID from environment variable
         const sheetName = process.env.SHEET_NAME || 'Test'; // Sheet name from environment variable or default to 'Sheet1'
         const range = `${sheetName}!M2:M`; // Addresses are in column M, starting from row 2
         const leads = await getSheetData(auth, spreadsheetId, range);
