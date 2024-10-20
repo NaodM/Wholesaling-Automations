@@ -6,7 +6,7 @@ const sheets = google.sheets('v4');
 async function authorize() {
     // Retrieve credentials from Apify Key-Value Store
     const keyValueStore = await KeyValueStore.open();
-    const credentials = await keyValueStore.getValue('google_credentials');
+    const credentials = await keyValueStore.getValue('GOOGLE_CREDENTIALS');
     
     if (!credentials) {
         throw new Error("Credentials not found in Key-Value Store");
