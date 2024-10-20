@@ -44,9 +44,9 @@
 // module.exports = { authorize, getSheetData, updateSheet };
 
 
-
 const { google } = require('googleapis');
 
+// Authorization function to get authenticated client
 async function authorize() {
     // Retrieve credentials from environment variable
     const credentialsString = process.env.GOOGLE_CREDENTIALS;
@@ -72,4 +72,27 @@ async function authorize() {
     return await auth.getClient();
 }
 
+// Get data from Google Sheets
+async function getSheetData(auth, spreadsheetId, range) {
+    const sheets = google.sheets({ version: 'v4', auth });
+    const response = await sheets.spreadsheets.values.get({
+        spreadsheetId,
+        range,
+    });
+
+    return response.data.values;
+}
+
+// Update Google Sheets with given data
+async function updateSheet(auth, spreadsheetId, range, values) {
+    const sheets = google.sheets({ version: 'v4', auth });
+    await sheets.spreadsheets.values.update({
+        spreadsheetId,
+        range,
+        valueInputOption: 'RAW',
+        resource: { values },
+    });
+}
+
+// Exporting all the functions
 module.exports = { authorize, getSheetData, updateSheet };
