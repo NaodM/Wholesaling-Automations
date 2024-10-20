@@ -1,5 +1,5 @@
 const { authorize, getSheetData, updateSheet } = require('./googleSheets');
-const { runScraper } = require('./apifyScraper');
+const { runScraper } = require('./apifyScraper.js');
 
 async function main() {
     try {
@@ -7,8 +7,8 @@ async function main() {
         const auth = await authorize();
 
         // Step 2: Get Addresses from Google Sheets
-        const spreadsheetId = process.env.SPREADSHEET_ID; '1ai-9Z8z_K6vek9KjvZ_91sO7bMjIznR1';// Google Sheet ID from environment variable
-        const sheetName = process.env.SHEET_NAME || 'Test'; // Sheet name from environment variable or default to 'Sheet1'
+        const spreadsheetId = process.env.SPREADSHEET_ID || '1ai-9Z8z_K6vek9KjvZ_91sO7bMjIznR1'; // Use environment variable or fallback to default
+        const sheetName = process.env.SHEET_NAME || 'Test'; // Sheet name from environment variable or default to 'Test'
         const range = `${sheetName}!M2:M`; // Addresses are in column M, starting from row 2
         const leads = await getSheetData(auth, spreadsheetId, range);
 
@@ -20,14 +20,14 @@ async function main() {
 
         // Step 5: Prepare Data for Update in Google Sheets
         const updateRangesPhones = [
-            `${Test}!E2:E`, // Phone 1
-            `${Test}!F2:F`, // Phone 2
-            `${Test}!G2:G`, // Phone 3
-            `${Test}!H2:H`, // Phone 4
-            `${Test}!I2:I`, // Phone 5
-            `${Test}!J2:J`, // Phone 6
-            `${Test}!K2:K`, // Phone 7
-            `${Test}!L2:L`  // Phone 8
+            `${sheetName}!E2:E`, // Phone 1
+            `${sheetName}!F2:F`, // Phone 2
+            `${sheetName}!G2:G`, // Phone 3
+            `${sheetName}!H2:H`, // Phone 4
+            `${sheetName}!I2:I`, // Phone 5
+            `${sheetName}!J2:J`, // Phone 6
+            `${sheetName}!K2:K`, // Phone 7
+            `${sheetName}!L2:L`  // Phone 8
         ];
 
         // Initialize arrays for each phone column
