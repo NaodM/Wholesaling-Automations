@@ -1,55 +1,44 @@
-// googleSheet.js: Script to interact with Google Sheets using Google API
-
 const { google } = require('googleapis');
+const { KeyValueStore } = require('apify');
 const sheets = google.sheets('v4');
 
-// Authorize function to authenticate using environment variables
+// Authorization function to get authenticated client
 async function authorize() {
-    try {
-        const credentials = JSON.parse(process.env.GOOGLE_SHEETS_CREDENTIALS);
-        const auth = new google.auth.GoogleAuth({
-            credentials: {
-                client_email: credentials.client_email,
-                private_key: credentials.private_key,
-            },
-            scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-        });
-        return await auth.getClient();
-    } catch (error) {
-        console.error('Error parsing GOOGLE_SHEETS_CREDENTIALS:', error);
-        throw error;
+    // Retrieve credentials from Apify Key-Value Store
+    const keyValueStore = await KeyValueStore.open();
+    const credentials = await keyValueStore.getValue('google_credentials');
+    
+    if (!credentials) {
+        throw new Error("Credentials not found in Key-Value Store");
     }
+
+    const auth = new google.auth.GoogleAuth({
+        credentials,
+        scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+    });
+
+    return await auth.getClient();
 }
 
-// Function to get data from a Google Sheet
+// Get data from Google Sheets
 async function getSheetData(auth, spreadsheetId, range) {
-    try {
-        const response = await sheets.spreadsheets.values.get({
-            spreadsheetId,
-            range,
-            auth,
-        });
-        return response.data.values;
-    } catch (error) {
-        console.error('Error getting sheet data:', error);
-        throw error;
-    }
+    const response = await sheets.spreadsheets.values.get({
+        spreadsheetId,
+        range,
+        auth,
+    });
+    return response.data.values;
 }
 
-// Function to update data in a Google Sheet
+// Update Google Sheets with given data
 async function updateSheet(auth, spreadsheetId, range, values) {
-    try {
-        await sheets.spreadsheets.values.update({
-            spreadsheetId,
-            range,
-            valueInputOption: 'RAW',
-            resource: { values },
-            auth,
-        });
-    } catch (error) {
-        console.error('Error updating sheet data:', error);
-        throw error;
-    }
+    await sheets.spreadsheets.values.update({
+        spreadsheetId,
+        range,
+        valueInputOption: 'RAW',
+        resource: { values },
+        auth,
+    });
 }
 
 module.exports = { authorize, getSheetData, updateSheet };
